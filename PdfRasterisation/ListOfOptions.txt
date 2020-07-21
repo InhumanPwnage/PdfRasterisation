@@ -1,0 +1,13 @@
+﻿https://www.html-to-pdf.net/pdf-to-image.aspx
+
+https://developers.foxitsoftware.com/pdf-sdk/windows/net/rasterizer/
+
+https://www.gnostice.com/nl_article.asp?id=177&t=How_To_Rasterize_A_PDF_Document_In_.NET
+
+https://www.pdfonline.com/easypdf/sdk/programming-pdf/csharp/raster-pdf-to-image.htm
+
+https://stackoverflow.com/questions/25033740/c-sharp-images-jpg-from-pdf-file
+https://github.com/jhabjan/Ghostscript.NET
+
+https://old.reddit.com/r/csharp/comments/7cnv5m/pdf_rasterizing_without_systemdrawing/
+https://www.nrecosite.com/pdf_to_image_renderer_net.aspx
