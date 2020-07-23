@@ -14,9 +14,18 @@ namespace PdfRasterisation.Helpers
             return Path.GetFileName(pathToFile);
         }
 
-        public static string PrepareOutputDirectoryAndFileName(string pathToFile, string pathToSaveTo)
+        public static string FileNameForImage(string prefix, string pathToFile, int? index)
         {
-            return $@"{pathToSaveTo}/{FileNameFromPath(pathToFile)}.png";
+            var indexString = index.HasValue ? (string.Format("{0:D3}", index)) : string.Empty;
+
+            return $"[{prefix}]_{Path.GetFileName(pathToFile)}_{indexString}";
+        }
+        
+        
+
+        public static string PrepareOutputDirectoryAndFileName(string fileName, string pathToSaveTo)
+        {
+            return $@"{pathToSaveTo}/{FileNameFromPath(fileName)}.png";
         }
 
         public static string[] GetPdfs(string pathToFiles)

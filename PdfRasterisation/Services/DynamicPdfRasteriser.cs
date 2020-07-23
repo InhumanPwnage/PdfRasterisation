@@ -23,7 +23,14 @@ namespace PdfRasterisation.Services
 
             // Save the image.
             //TiffImageFormat.TiffWithLzw
-            rasterizer.Draw(FileHelper.PrepareOutputDirectoryAndFileName(pathToFile, pathToSaveTo), PngImageFormat.Png, ImageSize.Dpi72);
+            rasterizer.Draw(
+                //FileHelper.PrepareOutputDirectoryAndFileName(pathToFile, pathToSaveTo), 
+                FileHelper.PrepareOutputDirectoryAndFileName(
+                        FileHelper.FileNameForImage("DynamicPDF", pathToFile, null),
+                        pathToSaveTo),
+                PngImageFormat.Png, ImageSize.Dpi72);
         }
+
+        //Dynamic PDF adds a huge ass watermark on each rasterised image, driving the file sizes to be larger. Just as fast as IronPDF.
     }
 }

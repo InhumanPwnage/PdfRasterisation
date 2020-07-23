@@ -15,18 +15,39 @@ namespace PdfRasterisation
 
             Console.WriteLine("Beginning PDF Rasterisation tests --- ");
 
-            Stopwatch stopWatch = new Stopwatch();
+            //var ironPdf = new IronPdfRasteriser();
+            //ironPdf.RasterizePdf(pdfs[0], $@"{projectPath}/output");
 
-            var ironPdf = new IronPdfRasteriser();
-
-            foreach (var pdf in pdfs)
-            {
-                ironPdf.RasterizePdf(pdf, $@"{projectPath}/output");
-            }
-            
+            var dynamicPdf = new DynamicPdfRasteriser();
+            dynamicPdf.RasterisePdf(pdfs[0], $@"{projectPath}/output");
 
             Console.WriteLine("End of PDF Rasterisation tests --- ");
             Console.ReadKey();
+        }
+
+        public static void RunTests(string[] pdfs)
+        {
+            Stopwatch stopWatch = new Stopwatch();
+
+            var ironPdf = new IronPdfRasteriser();
+            var dynamicPdf = new DynamicPdfRasteriser();
+
+            foreach (var pdf in pdfs)
+            {
+                stopWatch.Start();
+                ironPdf.RasterizePdf(pdf, $@"{projectPath}/output");
+                stopWatch.Stop();
+
+                Console.WriteLine($@"[IronPDF] {FileHelper.FileNameFromPath(pdf)} took {stopWatch.ElapsedMilliseconds} ms");
+                stopWatch.Reset();
+
+                stopWatch.Start();
+                dynamicPdf.RasterisePdf(pdf, $@"{projectPath}/output");
+                stopWatch.Stop();
+
+                Console.WriteLine($@"[DynamicPDF] {FileHelper.FileNameFromPath(pdf)} took {stopWatch.ElapsedMilliseconds} ms");
+                stopWatch.Reset();
+            }
         }
     }
 }

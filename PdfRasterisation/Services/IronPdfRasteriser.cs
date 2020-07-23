@@ -30,13 +30,21 @@ namespace PdfRasterisation.Services
             //Extract all pages as System.Drawing.Bitmap objects
             Bitmap[] pageImages = pdf.ToBitmap();
 
-            // Save the image as a GIF.
-            foreach (var image in pageImages)
+            // Save the image as a PNG.
+            // image in pageImages
+            for (int i = 0; i < pageImages.Length; i++ )
             {
-                image.Save(FileHelper.PrepareOutputDirectoryAndFileName(pathToPdf, pathToSaveTo), System.Drawing.Imaging.ImageFormat.Png);
+                //FileHelper.PrepareOutputDirectoryAndFileName(pathToPdf, pathToSaveTo)
+                pageImages[i].Save(
+                    FileHelper.PrepareOutputDirectoryAndFileName(
+                        FileHelper.FileNameForImage("IronPDF", pathToPdf, (i + 1)),
+                        pathToSaveTo), 
+                    System.Drawing.Imaging.ImageFormat.Png);
 
-                image.Dispose();
+                pageImages[i].Dispose();
             }
         }
+
+        //No non-sense PDF rasteriser. Rasterises as seen when viewing normally in PDF format.
     }
 }

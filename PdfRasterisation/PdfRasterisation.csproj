@@ -6,8 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Input\" />
-    <Folder Include="Output\" />
+    <Compile Remove="Input\**" />
+    <Compile Remove="Output\**" />
+    <EmbeddedResource Remove="Input\**" />
+    <EmbeddedResource Remove="Output\**" />
+    <None Remove="Input\**" />
+    <None Remove="Output\**" />
   </ItemGroup>
 
   <ItemGroup>
